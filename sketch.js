@@ -7,14 +7,16 @@ var buttoncaps, bottonLower;
 var img;
 
 var buttoncolorw ,buttoncolorb;
-
+let input, buttongo;
 
 
 
 
 function setup() {
   // create canvas
+   
   createCanvas(window.innerWidth, window.innerHeight);
+    
   textSize(15);
   noStroke();
     //img=loadImage('brexit.jpeg');
@@ -83,11 +85,21 @@ function setup() {
 
     
     
-    p = createP('change');
+    input=createInput('');
+    input.position(20,400);
+    input.changed(drawWord);
+    buttongo = createButton("go");
+    buttongo.position(160, 400);
+    buttongo.mousePressed(drawWord);
     
+    
+    //p = createP('change');
+    
+   //var p = input.value(); 
    
-    
-    
+   
+     p = createP(input.value());
+     
     
 }
 
@@ -96,8 +108,7 @@ function setup() {
 function draw() {
 
   background(255);
-    
-    
+  
   text('size', sSlider.x * 2 + sSlider.width, 35);
   text('weight', wSlider.x * 2 + wSlider.width, 65);
   text('position x', pSlider.x * 2 + pSlider.width, 95);
@@ -121,7 +132,7 @@ const r = crSlider.value();
     //image(img,width/5,0,width,height); 
    
   
-      
+   
 
  p.style('font-size' ,sSlider.value()+'px');
  p.style('font-weight' ,wSlider.value());
@@ -131,7 +142,7 @@ p.position(pSlider.value(),hSlider.value());
    
  
     
-    
+
     
     
     
@@ -174,6 +185,26 @@ function changeblack(){
     p.style('color', 'black');
     
 }
+
+
+function drawWord (){
+    input.remove();
+    buttongo.remove();
+   p = createP(input.value());
+    
+    for(var i=0; i < 30; i++) {
+    text(p);
+        
+    }
+    
+
+     
+}
+
+
+
+
+
 
 
 
